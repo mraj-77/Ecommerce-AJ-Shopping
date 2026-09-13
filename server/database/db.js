@@ -18,9 +18,14 @@ const database = new Client({
 
     port: process.env.DB_PORT,
 
-    ssl: {
-        rejectUnauthorized: false,
-    },
+    // SSL only for Render PostgreSQL
+    ...(process.env.NODE_ENV === "production"
+        ? {
+            ssl: {
+                rejectUnauthorized: false,
+            },
+        }
+        : {}),
 
 });
 
