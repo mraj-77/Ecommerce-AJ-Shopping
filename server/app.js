@@ -23,6 +23,13 @@ app.use(
     })
 );
 
+app.get("/", (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "AJ Shopping API is running successfully 🚀",
+    });
+});
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
